@@ -1,0 +1,69 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment folders
+env/
+venv/
+.myenv/
+myenv/
+ENV/
+*.env
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# PyInstaller
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.db
+
+# System-specific
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# Compiled models or large artifacts
+*.pkl
+*.h5
+*.joblib
+
+# Ignore CSV or dataset if large
+*.csv
+*.xlsx
+
+# Ignore Streamlit or Flask cache
+.streamlit/
+instance/
+
+# Ignore the full virtual environment
+myenv/
