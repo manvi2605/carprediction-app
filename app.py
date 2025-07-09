@@ -15,7 +15,7 @@ model = xgb.XGBRegressor()
 model.load_model("xgb_reg_model.json")
 
 # Load feature names used during training
-with open("model_features.pkl", "rb") as f:
+with open("xgb_reg_model.pkl", "rb") as f:
     model_features = pickle.load(f)
 
 # Home route
