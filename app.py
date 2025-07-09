@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
-import pickle
 import logging
+import xgboost as xgb
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -10,11 +10,33 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.ERROR)
 
 # Load the trained model
-with open('car_pred.pkl', 'rb') as file:
-    model = pickle.load(file)
+model = xgb.XGBRegressor()
+model.load_model("xgb_reg_model.json")
 
-# Dynamically extract feature names from the model
-model_features = model.feature_names_in_
+
+model_features = [
+    'milage', 'car_age', 'clean_title_label_enc', 'accident_label_enc',
+    
+    # One-hot encoded fuel types
+    'fuel_type_Gasoline', 'fuel_type_Hybrid',
+
+    # One-hot encoded brands (add all present in training data)
+    'brand_Ford', 'brand_BMW', 'brand_Jaguar', 'brand_Pontiac',
+
+    # One-hot encoded transmissions
+    'transmission_10-Speed A/T',
+    'transmission_6-Speed M/T',
+    'transmission_6-Speed A/T',
+    'transmission_Transmission w/Dual Shift Mode',
+    'transmission_A/T',
+
+    # One-hot encoded exterior colors
+    'ext_col_Black', 'ext_col_White', 'ext_col_Gray', 'ext_col_Blue', 'ext_col_Purple',
+
+    # One-hot encoded interior colors
+    'int_col_Black', 'int_col_Gray', 'int_col_Beige', 'int_col_Brown'
+]
+
 
 # Home route
 @app.route('/')
